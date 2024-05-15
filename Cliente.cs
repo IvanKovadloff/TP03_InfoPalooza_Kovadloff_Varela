@@ -35,6 +35,33 @@ class Cliente{
         }while (palabra == "");
         return palabra; 
     }
+    public DateTime ObtenerFecha(){
+        DateTime f1;
+        f1=DateTime.Today;
+        return f1;
+    }
+    public int MenúTipoEntrada (int maximo, int minimo){
+    int opcion= 0;
+    do {
+        Console.WriteLine("Menú ");
+        Console.WriteLine("opciones: ");
+        Console.WriteLine("1. Día 1 , valor a abonar $45000 ");
+        Console.WriteLine("2. Día 2, valor a abonar $60000");
+        Console.WriteLine("3. Día 3, valor a abonar $30000");
+        Console.WriteLine("4. Full Pass, valor a abonar $100000");
+        opcion = int.Parse(Console.ReadLine());
+    }while(opcion<minimo &&opcion>maximo);
+    return opcion;
+    
+}
+    public int ObtenerCantidad(){
+         int num=0;
+    do{
+        Console.WriteLine("Ingrese la cantidad de personas: ");
+        num = int.Parse(Console.ReadLine());
+    }while(num<0);
+    return num;
+    }
     public void SetearDni(){
         DNI = ObtenerDni();
     }
@@ -44,16 +71,13 @@ class Cliente{
     public void SetearApellido(){
         Apellido = PedirPalabra("Ingrese su apellido: ");
     }
-    public DateTime ObtenerFecha(){
-        bool pude=false;
-        string fecha;
-        DateTime f1;
-        do
-        {
-            Console.WriteLine();
-            fecha= Console.ReadLine();
-            pude=DateTime.TryParse(fecha,out f1);
-        }while(!pude);
-        return f1;
+    public void SetearFecha(){
+        FechaIns = ObtenerFecha();
+    }
+    public void SetearEntrada(){
+        TipoEntrada = MenúTipoEntrada(4,1);
+    }
+    public void SetearCantidad(){
+        Cantidad=ObtenerCantidad();
     }
 }
